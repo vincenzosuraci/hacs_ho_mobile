@@ -1,22 +1,45 @@
-from __init__ import HoMobileCrawler
+from dotenv import load_dotenv
+import os
 
 # ----------------------------------------------------------------------------------------------------------------------
 #
-# MAIN
+# MAIN - To be used for tests only!
 #
 # ----------------------------------------------------------------------------------------------------------------------
 
 if __name__ == "__main__":
 
-    # ------------------------------------------------------------------------------------------------------------------
-    # Ho.Mobile
-    # ------------------------------------------------------------------------------------------------------------------
+    # Load the .env file
+    load_dotenv()
 
-    phone_numbers = [ "xxx", "xxx"]
-    password = "xxx"
+    password = os.getenv("PASS")
+    phone_number = os.getenv("NUMBER")
 
-    ho_mobile = HoMobileCrawler(password)
+    stand_alone = False
 
-    for phone_number in phone_numbers:
-        ho_mobile.get_phone_number_credit(phone_number, password)
+    if stand_alone:
+
+        from ho_mobile_account.ho_mobile import HoMobile
+
+        ho_mobile = HoMobile(password)
+
+        ho_mobile.get_phone_number_credit(phone_number)
+
+    else:
+
+        from custom_components.ho_mobile.ho_mobile import HoMobile
+
+        ho_mobile = HoMobile(params={
+            'phone_number': phone_number,
+            'password': password
+        })
+        import asyncio
+        asyncio.run(ho_mobile.fetch_data())
+        import time
+        time.sleep(5)
+        asyncio.run(ho_mobile.fetch_data())
+
+
+
+
 

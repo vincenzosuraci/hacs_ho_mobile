@@ -1,1 +1,5 @@
-/.idea/
+# Escludi la cartella .idea
+.idea/
+
+# Escludi il file .env
+.env

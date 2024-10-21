@@ -1,17 +1,33 @@
-# Introduzione
-- Questo custom component permette di recuperare le seguenti informazioni relative alla scheda SIM dell'operatore <code>ho-mobile</code>: 
-  - numero di GB (internet/dati) rimanenti; 
-  - numero di GB totali previsti dal piano;
-  - data del successivo rinnovo.
-- Viene supportato il caso di 2 o più SIM (numeri di telefono) associate allo stesso account (password).
-- Non è supportato il caso di 2 o più account.
 
-# Installazione
-- Creare la directory <code>custom_components</code> nella directory principale (quella che contiene il file <code>configuration.yaml</code>)
-- Nella directory <code>custom_components</code>, creare la directory <code>ho_mobile_account</code>
-- Nella directory <code>ho_mobile_account</code> copia i file <code>\_\_init.py\_\_</code> e <code>manifest.json</code>
-- Riavviare Home Assistant
-- Dopo aver riavviato Home Assistant, nel file <code>configuration.yaml</code> aggiungere le seguenti righe (e salvare):
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
+
+
+This custom component allows you to retrieve the following information related to the SIM card of the `ho-mobile` operator:
+
+# HACS version (suggested)
+
+## Installation
+- add `ho-mobile` as a [custom repository](https://hacs.xyz/docs/faq/custom_repositories/)
+- in HACS, search for `ho-mobile` and install the latest release
+- in Home Assistant, add the `ho-mobile` integration, insert the `username`, `password` and the sim `number` and follow the instructions  
+
+
+# Stand-alone version
+
+# Introduction
+- This custom component allows you to retrieve the following information related to the SIM card of the `ho-mobile` operator:
+  - remaining GB (internet/data);
+  - total GB provided by the plan;
+  - next renewal date.
+- The case of 2 or more SIM cards (phone numbers) associated with the same account (password) is supported.
+- The case of 2 or more accounts is not supported.
+
+## Installation
+
+- Copy the `ho_mobile_account` folder into your [custom_components folder](https://developers.home-assistant.io/docs/en/creating_component_loading.html).
+- Restart Home Assistant.
+- After restarting Home Assistant, add the following lines to the <code>configuration.yaml</code> file (and save):
+
 
 ```yaml
 ho_mobile_account:
@@ -19,7 +35,7 @@ ho_mobile_account:
   password: !secret ho_mobile_account_password
   ```
 
-- Andare nel file <code>secrets.yaml</code> e aggiungere le seguenti righe (e salvare):
+- Go to the `secrets.yaml` file and add the following lines (and save):
 
 ```yaml
 ho_mobile_account_password: "inserire-qui-la-password"
@@ -28,15 +44,16 @@ ho_mobile_account_phone_numbers:
   - "inserire-qui-il-numero-di-telefono-#2"  
 ```
 
-- Riavviare Home Assistant
-- Dovrebbero comparire le seguenti terne di entità (una terna per ogni numero di telefono):
-  - <code>ho_mobile_account.\<numero-di-telefono\>_internet</code> > GB rimasti
-  - <code>ho_mobile_account.\<numero-di-telefono\>_internet_renewal</code> > Data del prossimo rinnovo
-  - <code>ho_mobile_account.\<numero-di-telefono\>_internet_threshold</code> > GB totali della offerta
+- Restart Home Assistant.
+- The following entity triples should appear (one triple for each phone number):
+  - `ho_mobile_account.<phone-number>_internet` > Remaining GB
+  - `ho_mobile_account.<phone-number>_internet_renewal` > Next renewal date
+  - `ho_mobile_account.<phone-number>_internet_threshold` > Total GB of the plan
 
-# Configurazione
-- Di default, viene eseguito un aggiornamento dei dati ogni 15 minuti
-- Si può personalizzare il periodo di aggiornamento dei dati, configurando il parametro <code>scan_interval</code> espresso in secondi:
+## Configuration
+- By default, data is updated every 15 minutes.
+- You can customize the data update interval by configuring the scan_interval parameter, expressed in seconds:
+
 ```yaml
 ho_mobile_account:
   phone_numbers: !secret ho_mobile_account_phone_numbers
