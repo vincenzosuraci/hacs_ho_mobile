@@ -24,7 +24,7 @@ class HoMobileConfigFlow(ConfigFlow, domain=DOMAIN):
             phone_number = user_input[CONF_PHONE_NUMBER]
             password = user_input[CONF_PASSWORD]
 
-            if phone_number and username and password:
+            if phone_number and password:
 
                 device = HoMobileDevice(params={
                     CONF_PASSWORD: password,
