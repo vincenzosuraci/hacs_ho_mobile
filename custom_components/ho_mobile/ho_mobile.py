@@ -125,9 +125,9 @@ class HoMobile:
                         status = json["operationStatus"]["status"]
                         if status != "OK":
                             diagnostic = json['operationStatus']['diagnostic']
-                            errorCode = json['operationStatus']['errorCode']
+                            error_code = json['operationStatus']['errorCode']
                             msg = (f"Phone number {str(self._phone_number)} "
-                                   f"errorCode: {errorCode} - "
+                                   f"errorCode: {error_code} - "
                                    f"diagnostic: {diagnostic}")
                             self.debug(msg)
                             code = 203
