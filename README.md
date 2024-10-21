@@ -3,6 +3,9 @@
 
 
 This custom component allows you to retrieve the following information related to the SIM card of the `ho-mobile` operator:
+- remaining GB (internet/data);
+- total GB provided by the plan;
+- next renewal date.
 
 # HACS version (suggested)
 
