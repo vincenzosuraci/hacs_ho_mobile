@@ -1,3 +1,6 @@
+# Setup failed for custom integration 'ho_mobile': No setup or config entry setup function defined
+# Risolto mettendo nel manifest nel campo name l'esatta stringa corrispondente alla directory del custom_components
+
 try:
     from homeassistant.core import HomeAssistant
     from homeassistant.config_entries import ConfigEntry
