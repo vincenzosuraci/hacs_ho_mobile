@@ -103,7 +103,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     device_registry = dr.async_get(hass)
     device_registry.async_get_or_create(
         config_entry_id=config_entry.entry_id,
-        identifiers={(DOMAIN, device_id)},  # Usa un identificativo unico per il router
+        identifiers={(DOMAIN, device_id)},  # Usa un identificativo unico per la SIM
         manufacturer=device_manufacturer,
         name=device_name,
     )
