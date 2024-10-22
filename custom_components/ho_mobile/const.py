@@ -22,7 +22,7 @@ DEVICE_MANUFACTURER = "ho. Mobile"
 # ----------------------------------------------------------------------------------------------------------------------
 # Device sensors
 # ----------------------------------------------------------------------------------------------------------------------
-SENSOR_RESIDUAL ="residual"
+SENSOR_RESIDUAL = "residual"
 SENSOR_THRESHOLD = "threshold"
 SENSOR_RENEWAL = "renewal"
 
