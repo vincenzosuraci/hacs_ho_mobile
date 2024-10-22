@@ -12,7 +12,7 @@ from homeassistant.helpers.update_coordinator import (
     UpdateFailed,
 )
 
-from .once import HoMobileError, HoMobileAuthError
+from .ho_mobile import HoMobileError, HoMobileAuthError
 
 from .const import DOMAIN, UPDATE_INTERVAL_S
 
