@@ -22,7 +22,7 @@ class HoMobileDevice(HoMobile):
 
     async def get_id(self):
         name = await self.get_name()
-        return name.lower().replace(" ","_").replace("-","_")
+        return name.lower().replace(". ","-").replace(" ","_").replace("-","_")
 
     async def get_name(self):
         return f"{DEVICE_MANUFACTURER} {self.phone_number}"
