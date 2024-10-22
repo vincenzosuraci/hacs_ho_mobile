@@ -1,5 +1,12 @@
-# Setup failed for custom integration 'ho_mobile': No setup or config entry setup function defined
-# Risolto mettendo nel manifest nel campo name l'esatta stringa corrispondente alla directory del custom_components
+import logging
+_LOGGER = logging.getLogger(__name__)
+
+from .const import (
+    SENSOR,
+    DOMAIN,
+    CONF_PHONE_NUMBER,
+    CONF_PASSWORD,
+)
 
 try:
     from homeassistant.core import HomeAssistant
@@ -8,17 +15,6 @@ try:
 
     from .ho_mobile_device import HoMobileDevice
     from .coordinator import HoMobileCoordinator
-
-    import logging
-
-    _LOGGER = logging.getLogger(__name__)
-
-    from .const import (
-        SENSOR,
-        DOMAIN,
-        CONF_PHONE_NUMBER,
-        CONF_PASSWORD,
-    )
 
     async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
 
