@@ -1,11 +1,13 @@
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
 
-
 This custom component allows you to retrieve the following information related to the SIM card of the `ho-mobile` operator:
 - remaining GB (internet/data);
 - total GB provided by the plan;
 - next renewal date.
+
+# November 2024 Update
+Since Ho.Mobile activated a 2FA method, the HACS integration does not work anymore!
 
 # HACS version (suggested)
 
